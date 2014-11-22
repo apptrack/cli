@@ -1,0 +1,25 @@
+{
+	"name": "apptrack-cli",
+	"description": "Command-line interface for Apptrack",
+	"version": "0.0.1",
+	"author": "kdi",
+	"contributors": [
+		{ "name": "Makis Tracend", "email": "makis@kdi.co" }
+	],
+	"homepage": "http://apptrack.io",
+	"keywords": ["apptrack", "aggregate", "cli", "json"],
+	"repository": {
+	"type": "git",
+		"url": "git://github.com/apptrack/cli.git"
+	},
+	"engines": { "node": ">=0.8.x" },
+	"main": "index",
+	"bin": {
+		"apptrack": "bin/apptrack"
+	},
+	"dependencies": {
+		"commander": "2.1.0",
+		"apptrack-api": "*",
+		"prompt": "0.2.12"
+	}
+}
