@@ -12,6 +12,13 @@
 	"type": "git",
 		"url": "git://github.com/apptrack/cli.git"
 	},
+	"bugs": {
+		"url": "http://github.com/apptrack/cli/issues"
+	},
+	"licenses": [{
+		"type": "MIT",
+		"url": "http://www.makesites.org/licenses/MIT"
+	}],
 	"engines": { "node": ">=0.8.x" },
 	"main": "index",
 	"bin": {
@@ -20,6 +27,7 @@
 	"dependencies": {
 		"commander": "2.1.0",
 		"apptrack-api": "*",
-		"prompt": "0.2.12"
+		"prompt": "0.2.12",
+		"underscore": "1.7.0"
 	}
 }
