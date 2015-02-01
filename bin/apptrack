@@ -4,14 +4,19 @@
  * Module dependencies.
  */
 
-var program = require('commander')
-	main = require("../lib/main");
+var program = require('commander'),
+	main = require('../lib/main'),
+	path = require('path'),
+	fs = require('fs');
 
 var exec;
+// package info
+var package = JSON.parse( fs.readFileSync( path.resolve( __dirname, '../package.json'), 'utf-8') ); // condition the existance of package.json?
 
 program
-	.version('0.2.0')
+	.version( package.version )
 	.option('-c, --config <path>', 'Set config path. Defaults to ~/.apptrack')
+	.option('-r, --reset', 'Reset token saved');
 
 /* Setup */
 program
@@ -21,7 +26,7 @@ program
 		process.nextTick(function(){
 			exec.setup(options )
 		});
-	})
+	});
 
 /* User */
 program
@@ -32,7 +37,7 @@ program
 		process.nextTick(function(){
 			exec.user( id, options )
 		});
-	})
+	});
 
 /* Product */
 program
@@ -51,14 +56,13 @@ program
 		console.log('    $ product {{id}}');
 		console.log('    $ product --all');
 		console.log();
-});
+	});
 
 /* Subscriptions */
 program
 	.command('sub [id]')
 	.description('Read subscriber info, optionally from product')
 	.option("-a, --all", "Read all subscribers")
-	.option("-i, --item <number>", "Output a single item by its id")
 	.option("-k, --keys <list>", "Return only certain fields")
 	.option("-n, --number <number>", "Limit number of items returned")
 	.option("-q, --query <string>", "Output items based on conditions")
@@ -72,10 +76,10 @@ program
 	.on('--help', function() {
 		console.log('  Examples:');
 		console.log();
-		console.log('    $ sub -i {{id}}');
-		console.log('    $ sub {{user}} --all');
+		console.log('    $ sub {{id}}');
+		console.log('    $ sub {{id}} --all');
 		console.log();
-});
+	});
 
 program.parse(process.argv);
 
