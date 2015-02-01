@@ -32,6 +32,8 @@ program
 program
 	.command('user [id]')
 	.description('Read user info')
+	.option("-a, --apps", "List all apps for user")
+	.option("-l, --logs", "List all logs for user")
 	.action(function(id, options){
 		id = id || false;
 		process.nextTick(function(){
@@ -39,11 +41,12 @@ program
 		});
 	});
 
-/* Product */
+/* App */
 program
-	.command('product [id]')
+	.command('app [id]')
 	.description('Read product details')
-	.option("-a, --all", "List all products for user")
+	.option("-a, --all", "List all apps for user")
+	.option("-l, --logs", "List all logs for app")
 	.action(function(id, options){
 		id = id || false;
 		process.nextTick(function(){
@@ -53,16 +56,16 @@ program
 	.on('--help', function() {
 		console.log('  Examples:');
 		console.log();
-		console.log('    $ product {{id}}');
-		console.log('    $ product --all');
+		console.log('    $ app {{id}}');
+		console.log('    $ app --all');
 		console.log();
 	});
 
-/* Subscriptions */
+/* Log */
 program
-	.command('sub [id]')
-	.description('Read subscriber info, optionally from product')
-	.option("-a, --all", "Read all subscribers")
+	.command('log [id]')
+	.description('Read log info, optionally from app')
+	.option("-a, --all", "Read all logs")
 	.option("-k, --keys <list>", "Return only certain fields")
 	.option("-n, --number <number>", "Limit number of items returned")
 	.option("-q, --query <string>", "Output items based on conditions")
@@ -76,8 +79,8 @@ program
 	.on('--help', function() {
 		console.log('  Examples:');
 		console.log();
-		console.log('    $ sub {{id}}');
-		console.log('    $ sub {{id}} --all');
+		console.log('    $ log {{id}}');
+		console.log('    $ log {{id}} --all');
 		console.log();
 	});
 
