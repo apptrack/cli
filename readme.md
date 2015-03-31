@@ -6,7 +6,7 @@ A utility app to perform API requests to a remote Apptrack service using a comma
 
 Using npm:
 ```
-npm install apptrack-cli
+npm install -g apptrack-cli
 ```
 
 ## Credits
